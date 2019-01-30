@@ -16,13 +16,21 @@ message.addNotification({
 });
 
 
- var regTokens = ['dl3oGK_Xirs:APA91bGnbVyJdM8CSOJkRHc2knjx1YlxPRzCIhVvvlRx3_ybd2Fczca4LjHKLh_OeoF0bob'];
+ var regTokens = ['eITSjt15ZFk:APA91bGXw2XvbCjgQ7Nx-1hvzJTcKg1uyKgG6pf2Syc9EmnQgX_F9vKhizo0UtiluMKn5nWM42LtNdtI8VJLSZbaFEjm2Py1z0M5-9Uf3y97RxIpJ_n3XFWO-8HYS54Ab_kwmGvZN8-G'];
 
 const sendMessage = () =>{
     sender.send(message, regTokens, 1, function (err, response) {
         if (err) console.error("Fail to send " + err);
         else console.log(response);
     });
+    return 0;
 } 
 
-module.exports = sendMessage;
+const doSomething = () =>{
+    return 0;
+}
+
+module.exports = {
+    sendMessage: sendMessage,
+    dosomething: doSomething
+}

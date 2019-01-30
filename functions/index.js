@@ -17,6 +17,21 @@ exports.doThings = functions.database.ref('DeviceLocation/{id}').onWrite((change
   });
 
 exports.sendGCMNotification = functions.database.ref('DeviceLocation').onWrite((change,context) =>{
-  sendMessage();
+  const payload = {
+    notification: {
+      title: 'You have a new follower!',
+      body: `I am now following you.`
+    }
+  };
+
+  // Listing all tokens as an array.
+  tokens = ['eITSjt15ZFk:APA91bGXw2XvbCjgQ7Nx-1hvzJTcKg1uyKgG6pf2Syc9EmnQgX_F9vKhizo0UtiluMKn5nWM42LtNdtI8VJLSZbaFEjm2Py1z0M5-9Uf3y97RxIpJ_n3XFWO-8HYS54Ab_kwmGvZN8-G'];
+
+  return admin.messaging().sendToDevice(tokens, payload);
 });
+
+// exports.sendMessage = functions.database.ref('DeviceLocation').onWrite((change,context) =>{
+//   doSomething;
+//   return 0;
+// });
   
